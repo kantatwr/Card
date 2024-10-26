@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation Card for Shippu</title>
+    <style>
+        /* Body and background settings */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+            background-image: radial-gradient(circle at center, #FFE4B5, #FF6F61, #6FA3EF); /* Soft gradient background */
+        }
+
+        /* Decorative border for page */
+        .background-border {
+            border: 10px solid #000; /* Increased border thickness */
+            padding: 20px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Card styling */
+        .card {
+            background: linear-gradient(to right, #FF6F61, #6FA3EF); /* Colorful gradient */
+            border: 6px solid #FFD700; /* Increased border thickness */
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 800px; /* Increased size */
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: popIn 0.5s ease-in-out;
+        }
+
+        /* Card header and subtitle */
+        .card h1 {
+            color: #fff;
+            font-size: 32px;
+            margin-bottom: 10px;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .card h2 {
+            color: #FFD700;
+            font-size: 24px;
+            margin: 15px 0;
+            font-weight: bold;
+            animation: slideIn 0.6s ease-in-out;
+        }
+
+        /* Main text styling */
+        .card p {
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease-in-out;
+        }
+
+        /* Surprise box styling */
+        .surprise-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #FFD700;
+            color: #000;
+            border: 3px solid #000;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            transition: transform 0.3s, background-color 0.3s;
+            position: relative;
+            width: 80%; /* Consistent width for both boxes */
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: bounce 0.8s infinite alternate;
+        }
+
+        /* Hover effect */
+        .surprise-box:hover {
+            background-color: #333;
+            color: #FFD700;
+            transform: scale(1.05);
+        }
+
+        /* Hidden message in the surprise box */
+        .hidden-message {
+            display: none;
+            position: absolute;
+            background-color: #B1DDF1;
+            border: 2px solid #000;
+            color: #333;
+            padding: 10px; /* Reduced padding for smaller size */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-size: 14px; /* Reduced font size */
+            max-width: 200px; /* Smaller width */
+            text-align: center;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Show hidden message */
+        .show-message .hidden-message {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Position adjustments for each hidden message */
+        .surprise-box-1 .hidden-message {
+            top: 0;
+            left: 105%; /* Position to the right of box 1 */
+        }
+        
+        .surprise-box-2 .hidden-message {
+            top: 0;
+            right: 105%; /* Position to the left of box 2 */
+        }
+
+        /* Button styling for the last message */
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 22px;
+            color: #fff;
+            background-color: #FF6F61;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            border: 2px solid #000;
+        }
+
+        /* Button hover */
+        .btn:hover {
+            background-color: #333;
+            color: #FFD700;
+        }
+
+        /* Surprise heading */
+        .surprise-heading {
+            margin-top: 20px;
+            font-size: 22px;
+            color: #fff;
+            font-weight: bold;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+    </style>
+    <script>
+        function toggleMessage(index) {
+            document.querySelector(`.surprise-box-${index}`).classList.toggle('show-message');
+        }
+    </script>
+</head>
+<body>
+
+<div class="background-border">
+    <div class="card">
+        <h1>Dear Shippu,</h1>
+        <h2>🌺 Invitation to Success 🌺</h2>
+        <p>Har Har Mahadev! May Mahadev bless you with the strength to conquer all challenges. Always remember, each day brings you closer to your dreams, and your efforts make your parents proud.</p>
+        <p>Your dreams are beautiful, and the journey towards them is incredible! Never lose sight of the magic within you!
+            Just Keep Studying Hard and Keep Creating the System..
+        </p>
+
+        <div class="surprise-heading">Click here for surprise:</div>
+
+        <!-- First Surprise Box -->
+        <div class="surprise-box surprise-box-1" onclick="toggleMessage(1)">
+            Surprise Message 1!
+            <div class="hidden-message">
+                🌟 Keep shining, keep rocking, and for sure you'll rock the world one day, Tripathi ji!
+            </div>
+        </div>
+
+        <!-- Second Surprise Box -->
+        <div class="surprise-box surprise-box-2" onclick="toggleMessage(2)">
+            Surprise Message 2!
+            <div class="hidden-message">
+                💖 Through every challenge and every victory, your Kanta supports you unconditionally! 
+            </div>
+        </div>
+
+        <!-- Button for the last line -->
+        <a href="#" class="btn">Be happy always and keep doing mastii!</a>
+    </div>
+</div>
+
+</body>
+</html>
